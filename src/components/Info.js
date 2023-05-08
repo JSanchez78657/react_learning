@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import LikeButton from './LikeButton'
-import SupermanLogo from '../SupermanLogo.png'
-import ManhunterLogo from '../Martian ManhunterLogo.png'
 
 class Info extends Component {
 
