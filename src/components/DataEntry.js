@@ -1,7 +1,10 @@
 export default function DataEntry({entry}) {
     return (
-        <div>
-            <span>{entry.name}, aka {entry.secret_identity}. They have the power of {entry.power}. They can only be stopped by {entry.weakness}</span>
-        </div>
+        <tr key={entry.key}>
+            <td>{entry.name}</td>
+            <td>{entry.secret_identity}</td>
+            <td>{entry.power}</td>
+            <td>{entry.weakness}</td>
+        </tr>
     )
 }
