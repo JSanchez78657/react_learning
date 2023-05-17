@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import DataBase from './DataBase';
 import reportWebVitals from './reportWebVitals';
+import Parent from "./components/Parent";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DataBase/>
+    <Parent/>
   </React.StrictMode>
 );
 
