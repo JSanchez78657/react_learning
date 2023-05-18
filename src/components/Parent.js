@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Child from "./Child";
+import axios from "axios";
 
 export default function Parent() {
 
@@ -8,6 +9,17 @@ export default function Parent() {
     const [textBoxHold, setTextBoxHold] = useState('')
     const [childrenDisplay, setChildrenDisplay] = useState('block')
     const [parentDisplay, setParentDisplay] = useState('block')
+    const [quote, setQuote] = useState('')
+
+    function getQuote() {
+        axios.get('https://api.quotable.io/random')
+            .then(res => {
+                setQuote(res.data.content)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     function toggleParentText() {
         if(parentText === 'Parent')
@@ -25,11 +37,15 @@ export default function Parent() {
 
     return (
         <div>
+            <span>
+                {quote}
+            </span>
             <span style={{display:parentDisplay}}>
                 {parentText}
                 <input type={'text'} value={textBoxHold} onChange={(e) => setTextBoxHold(e.target.value)}/>
-                <button onClick={() => setTextBoxValue(textBoxHold)}>Submit</button>
-                <button onClick={() => setChildrenDisplay(childrenDisplay === 'block' ? 'none' : 'block')}>Toggle</button>
+                <button onClick={() => setTextBoxValue(textBoxHold)}>Change Value</button>
+                <button onClick={() => setChildrenDisplay(childrenDisplay === 'block' ? 'none' : 'block')}>Toggle Child</button>
+                <button onClick={() => getQuote()}>Random Quote</button>
             </span>
             <span>
                 <Child toggleParentText={toggleParentText} parentValue={textBoxValue} setParentValue={setTextBoxHold} display={childrenDisplay} toggleParentDisplay={toggleParentDisplay}/>
