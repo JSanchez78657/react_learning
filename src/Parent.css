@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+}
+
+.Parent {
+    font-size: larger;
+    background-color: chocolate;
+    display: inline-block;
+    margin: auto;
+    border: 3px solid gray;
+    border-radius: 5px;
+}

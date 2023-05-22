@@ -1,0 +1,13 @@
+.Child {
+    float: left;
+    text-align: left;
+    font-size: small;
+    background-color: darkorange;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+.Child button {
+    font-family: 'Bookman Old Style', sans-serif;
+    float: right;
+}

@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import '../Parent.css'
 import Child from "./Child";
 import axios from "axios";
 
@@ -9,7 +10,6 @@ export default function Parent() {
     const [textBoxHold, setTextBoxHold] = useState('')
     const [childrenDisplay, setChildrenDisplay] = useState('block')
     const [parentDisplay, setParentDisplay] = useState('block')
-    const [quote, setQuote] = useState('')
     const baseURL = 'http://localhost:3002/promise'
     const data = { title: 'Foo', body: 'bar', userID: 1 }
 
@@ -38,7 +38,6 @@ export default function Parent() {
             .catch(err => {
                 console.log('Error: ' + err)
             })
-        console.log('Test1')
     }
 
     function putRequest() {
@@ -79,21 +78,20 @@ export default function Parent() {
     }
 
     return (
-        <div>
-            <span>
-                {quote}
-            </span>
-            <span style={{display:parentDisplay}}>
-                {parentText}
+        <div className={'Parent'}>
+            <div style={{display:parentDisplay}}>
+                {parentText + ' '}
                 <input type={'text'} value={textBoxHold} onChange={(e) => setTextBoxHold(e.target.value)}/>
                 <button onClick={() => setTextBoxValue(textBoxHold)}>Change Value</button>
                 <button onClick={() => setChildrenDisplay(childrenDisplay === 'block' ? 'none' : 'block')}>Toggle Child</button>
+                <br/>
                 <button onClick={() => getRequest()}>Get Request</button>
                 <button onClick={() => postRequest()}>Post Request</button>
                 <button onClick={() => putRequest()}>Put Request</button>
                 <button onClick={() => deleteRequest()}>Delete Request</button>
-            </span>
+            </div>
             <span>
+                <Child toggleParentText={toggleParentText} parentValue={textBoxValue} setParentValue={setTextBoxHold} display={childrenDisplay} toggleParentDisplay={toggleParentDisplay}/>
                 <Child toggleParentText={toggleParentText} parentValue={textBoxValue} setParentValue={setTextBoxHold} display={childrenDisplay} toggleParentDisplay={toggleParentDisplay}/>
             </span>
         </div>
